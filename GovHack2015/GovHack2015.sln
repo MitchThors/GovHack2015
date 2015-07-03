@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovHack2015", "GovHack2015\GovHack2015.csproj", "{FF11F0C3-3753-497F-989B-F55F613C0211}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GovHack2015.Tests", "GovHack2015.Tests\GovHack2015.Tests.csproj", "{49CE58C7-728E-4030-8FF0-AE5B873AC15C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF11F0C3-3753-497F-989B-F55F613C0211}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF11F0C3-3753-497F-989B-F55F613C0211}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF11F0C3-3753-497F-989B-F55F613C0211}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF11F0C3-3753-497F-989B-F55F613C0211}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49CE58C7-728E-4030-8FF0-AE5B873AC15C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49CE58C7-728E-4030-8FF0-AE5B873AC15C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49CE58C7-728E-4030-8FF0-AE5B873AC15C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49CE58C7-728E-4030-8FF0-AE5B873AC15C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
