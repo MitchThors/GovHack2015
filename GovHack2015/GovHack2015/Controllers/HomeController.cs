@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GovHack2015.Logic;
 
 namespace GovHack2015.Controllers
 {
@@ -10,6 +11,8 @@ namespace GovHack2015.Controllers
     {
         public ActionResult Index()
         {
+            GetArticles a = new GetArticles();
+            var aa = a.PopulateArticles();
             return View();
         }
 
