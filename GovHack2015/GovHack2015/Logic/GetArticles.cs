@@ -26,7 +26,16 @@ namespace GovHack2015.Logic
                 // Now parse with JSON.Net
             }
             return articles;
+        }
+
+        public DtoContent PopulateDtoContent()
+        {
+            var dtoContent = new DtoContent();
+            dtoContent.ArticleList = PopulateArticles();
+
+            return dtoContent;
         } 
+
 
 
     }
