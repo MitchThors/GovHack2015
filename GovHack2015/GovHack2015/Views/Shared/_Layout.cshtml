@@ -43,12 +43,12 @@
     <footer class="footer">
         <div class="container">
             <p class="text-muted">
-
-                <a class="btn btn-default" href="#" role="button">
+                @{ Html.ActionLink("List", "ListIndex", "List", new { @class="btn btn-default"}, null); }
+                <a class="btn btn-default" href="../List/ListIndex.cshtml" role="button">
                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
   
                 </a>
-                <a class="btn btn-default" href="#" role="button">
+                <a class="btn btn-default" href="/Views/Map/Index.cshtml" role="button">
                     <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                 </a>
             </p>
