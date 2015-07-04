@@ -12,6 +12,7 @@ namespace GovHack2015.Controllers
         // GET: /Map/
         public ActionResult Index()
         {
+
             return View();
         }
 	}

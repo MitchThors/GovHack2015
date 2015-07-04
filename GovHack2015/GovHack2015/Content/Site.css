@@ -63,3 +63,19 @@ span.glyphicon-list {
 span.glyphicon-map-marker {
     font-size: 5em;
 }
+
+
+/*Google maps stuff*/
+.gmaps-wrapper {
+     position: relative;
+     padding-bottom: 75%;
+     height: 0;
+     overflow: hidden;
+}
+.gmaps-wrapper .dmxGoogleMaps {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100% !important;
+     height: 100% !important;
+}
