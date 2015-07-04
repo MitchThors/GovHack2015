@@ -64,6 +64,10 @@ span.glyphicon-map-marker {
     font-size: 5em;
 }
 
+.main-button {
+    float:none
+}
+
 
 /*Google maps stuff*/
 .gmaps-wrapper {
@@ -83,4 +87,10 @@ span.glyphicon-map-marker {
 /*timeliner*/
 .timeline-event-content > img {
     float: left;
+}
+
+@media (max-width: 768px) {
+    .main-button {
+    float:none
+
 }
