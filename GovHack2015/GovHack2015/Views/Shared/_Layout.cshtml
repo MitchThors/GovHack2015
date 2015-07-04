@@ -8,55 +8,69 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-
-                <ul class="nav navbar-nav">
-                    <li>
-                        @using (Html.BeginForm("listSearch", "List"))
-                        {
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
-                                @*<span class="input-group-btn">
-                                        <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
-                                    </span>*@
-                            </div>
-                        }
+        <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new {@class = "navbar-brand"})
+                </div>
+                
+                
+                <div class="navbar-collapse collapse">
 
 
-                    </li>
-                </ul>
+                    <ul class="nav navbar-nav">
+                        <li>
+                            @using (Html.BeginForm("listSearch", "List"))
+                            {
+
+    
+                                    <div class="col-lg-8 col-md-8 col-xs-12" id="search-barContainer">
+                                        <div class="input-group">
+                                            <input type="text" id="search-bar" class="form-control" placeholder="Search" aria-describedby="basic-addon2">
+                                            <span class="input-group-addon" id="basic-addon2">Testing</span>
+                                        </div>
+                                    </div>
+
+                               
+                                /*
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
+                                    <span class="input-group-btn">
+                                            <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
+                                    </span>
+                                </div>*/
+                            }
+
+                        </li>
+                        
+                    </ul>
+                </div>
             </div>
         </div>
-    </div>
 @*<div class="container body-content" style="padding-top: 100px;">
         @RenderBody()
     </div>*@
 
 
 <div class="container-map">
-    @RenderBody()
+            @RenderBody()
     @*<div id="map-canvas"></div>*@
-    @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/bootstrap")
     
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
 
     <footer class="footer">
         <div class="container main-button">
-            <a class="btn btn-default col-xs-6 col-md-6 col-lg-3 col-lg-offset-3" href="../List/ListIndex" role="button">
+            <a class="btn btn-default col-xs-6 col-sm-6 col-md-6 col-lg-3 col-lg-offset-3" href="../List/ListIndex" role="button">
                 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
             </a>
 
-            <a class="btn btn-default col-xs-6 col-md-6 col-lg-3" href="../Map/Index" role="button">
+            <a class="btn btn-default col-xs-6 col-sm-6 col-md-6 col-lg-3" href="../Map/Index" role="button">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
             </a>
         </div>

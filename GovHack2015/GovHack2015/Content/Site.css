@@ -91,27 +91,39 @@ span.glyphicon-map-marker {
 
 /*Google maps stuff*/
 .gmaps-wrapper {
-    position: relative;
-    padding-bottom: 75%;
-    height: 0;
-    overflow: hidden;
+     position: relative;
+     padding-bottom: 75%;
+     height: 0;
+     overflow: hidden;
 }
 
-    .gmaps-wrapper .dmxGoogleMaps {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100% !important;
-        height: 100% !important;
-    }
+.gmaps-wrapper .dmxGoogleMaps {
+     position: absolute;
+     top: 0;
+     left: 0;
+     width: 100% !important;
+     height: 100% !important;
+}
 
 /*timeliner*/
 .timeline-event-content > img {
     float: left;
 }
 
-@media (max-width: 768px) {
     .main-button {
         float: none;
     }
+
+    #search-barContainer {
+        overflow-x: hidden;
+        float: right;
+    }
+
+    #search-bar {
+        max-width: 100%;
+      
 }
+
+ 
+    
+
