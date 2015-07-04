@@ -96,7 +96,7 @@
   float: left;
   line-height: 1.5em;
   margin: 6px 0 10px;
-  width: 500px;
+  /*width: 500px;*/
 }
 .timeline-event-content h4 {
   clear: left;
@@ -122,7 +122,7 @@
 .timeline-event-content .media {
   float: right;
   padding: 0 0 12px;
-  width: 300px;
+  /*width: 300px;*/
 }
 .timeline-event-content .media img {
   border: 2px solid #000;
