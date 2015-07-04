@@ -83,7 +83,7 @@ namespace GovHack2015.Logic
         {
             var markers = articles.Select(article => new ArticleMarker()
             {
-                Icon = GlobalData.IconToilet,
+                Icon = GlobalData.IconPin,
                 Lat = article.Latitude,
                 Lon = article.Longitude,
                 Title = article.Title

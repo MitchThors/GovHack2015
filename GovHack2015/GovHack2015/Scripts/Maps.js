@@ -40,7 +40,7 @@ var closeInfoBox = function () {
 
 function initialize() {
     var mapOptions = {
-        zoom: 18
+        zoom: 15
     };
 
     map = new google.maps.Map(document.getElementById('map-canvas'),
@@ -127,14 +127,16 @@ function alertContents() {
                     closeInfoBox();
   
                     ib.setPosition(marker.position);
-                    ib.setContent(this.get('title') + "<a href=\"#\" onClick=displayRoute(" + this.get('position').A+","+ this.get('position').F + ")>Click Here for Walking directions</a>");
+                    ib.setContent(this.get('title') +
+                        "<br/><a href=\"#\" onClick=displayRouteDriving(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Driving directions</a>" +
+                        "<br/><a href=\"#\" onClick=displayRouteWalking(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Walking directions</a>");
                     ib.open(map, this);
 
 
                 });
                 closeInfoBox();
             }
-            //alert("Loaded");
+            alert("Loaded");
             //removeSpinner();
 
             // call direction routing
@@ -147,8 +149,30 @@ function alertContents() {
     }
 }
 
+function displayRouteDriving(lat, lon) {
 
-function displayRoute(lat, lon) {
+
+    // also, constructor can get "DirectionsRendererOptions" object
+    //directionsDisplay.setDirections({routes: []}); // map should be already initialized.
+    directionsDisplay.setMap(map); // map should be already initialized.
+
+
+    var request = {
+        origin: pos,
+        destination: new google.maps.LatLng(lat, lon),
+        travelMode: google.maps.TravelMode.DRIVING
+    };
+
+    directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        }
+    });
+
+    closeInfoBox();
+}
+
+function displayRouteWalking(lat, lon) {
 
     
    // also, constructor can get "DirectionsRendererOptions" object
@@ -167,6 +191,8 @@ function displayRoute(lat, lon) {
             directionsDisplay.setDirections(response);
         }
     });
+
+    closeInfoBox();
 }
 
 function handleNoGeolocation(errorFlag) {
