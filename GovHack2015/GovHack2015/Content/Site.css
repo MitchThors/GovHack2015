@@ -124,6 +124,14 @@ span.glyphicon-map-marker {
       
 }
 
- 
+ #main-h3 {
+     text-align: end;
+ }
+
+ @media (max-width: 480px) {
+     #main-h3 {
+     text-align: center;
+    } 
+ }
     
 
