@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using GovHack2015.Logic;
@@ -13,12 +12,6 @@ namespace GovHack2015.Globals
     {
         //  Note: Private Constructor...
         //      You can assign default values here!
-        private List<Article> _abcData = null;
-        private DateTime _abcDataLastUpdated;
-
-        private string _userLatitude;
-        private string _userLongitude;
-        
         private SessionData()
         {
             
@@ -39,31 +32,6 @@ namespace GovHack2015.Globals
             }
         }
 
-        public IEnumerable<Article> ABCData
-        {
-            get
-            {
-                if ((_abcData == null) || (!_abcData.Any()) || (_abcDataLastUpdated < DateTime.Now.AddHours(-1)))
-                {
-                    var getArticles = new GetArticles();
-                    _abcData = getArticles.PopulateArticles();
-                    _abcDataLastUpdated = DateTime.Now;
-
-                }
-
-                return _abcData;
-            }
-        }
-
-        public string UserLat {
-            get { return _userLatitude; }
-            set { _userLatitude = value; }
-        }
-
-        public string UserLon
-        {
-            get { return _userLongitude; }
-            set { _userLongitude = value; }
-        }
+        
     }
 }

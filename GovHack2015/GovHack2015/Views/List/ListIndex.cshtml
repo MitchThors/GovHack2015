@@ -1,7 +1,7 @@
 ﻿@using GovHack2015.Logic
 @using GovHack2015.Models
 @model GovHack2015.Models.DtoContent
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" href="../../Content/timeliner-master/css/timeliner.min.css" type="text/css" media="screen">
 <link rel="stylesheet" href="../../Content/timeliner-master/css/responsive.css" type="text/css" media="screen">
@@ -37,8 +37,10 @@ else
                             <a>@Model.ArticleList.ElementAt(i).Title</a>
                         </dt>
                         <dd class="timeline-event-content" id="event@(i)EX">
+                            <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250px"/><br/>
                             <p>@Model.ArticleList.ElementAt(i).Subjects</p>
-                            <p><a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a></p>
+                            <p><a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a>
+                            </p>
                         </dd>
                         i++;
                         if (i > Model.ArticleList.Count()-1)

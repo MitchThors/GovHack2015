@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-<div id="wrap">
+    <div id="wrap">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -20,16 +20,17 @@
                     @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
-                    
+
                     <ul class="nav navbar-nav">
                         <li>
-                            @using(Html.BeginForm("listSearch", "List")){
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
-                                @*<span class="input-group-btn">
-                                    <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
-                                </span>*@
-                            </div>
+                            @using (Html.BeginForm("listSearch", "List"))
+                            {
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
+                                    @*<span class="input-group-btn">
+                                            <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
+                                        </span>*@
+                                </div>
                             }
 
 
@@ -39,33 +40,31 @@
             </div>
         </div>
         <div class="container body-content" style="padding-top: 100px;">
-   
-            @RenderBody()
-            </div>
-            @*@Scripts.Render("~/bundles/jquery")*@
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
 
-        <hr />
+            @RenderBody()
+        </div>
+        @*@Scripts.Render("~/bundles/jquery")*@
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
     </div>
 
     <footer class="footer">
         <div class="container">
             <div class="row">
-            <div class="col-xs-6">
+                <div class="col-xs-6">
 
-                <a class="btn btn-default" href="../List/ListIndex" role="button">
-                    <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-                </a>
-            </div>
+                    <a class="btn btn-default" href="../List/ListIndex" role="button">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                    </a>
+                </div>
                 <div class="col-xs-6">
 
                     <a class="btn btn-default" href="../Map/Index" role="button">
                         <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                     </a>
                 </div>
-                </div>
+            </div>
         </div>
     </footer>
-    </body>
-    </html>
+</body>
+</html>

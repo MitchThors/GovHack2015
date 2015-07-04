@@ -138,6 +138,9 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\govenor.png" />
+    <Content Include="Content\images\pin.png" />
+    <Content Include="Content\images\toilet.png" />
     <Content Include="Content\timeliner-master\css\demo.css" />
     <Content Include="Content\timeliner-master\css\responsive.css" />
     <Content Include="Content\timeliner-master\css\timeliner.css" />
@@ -196,6 +199,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\timeliner.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
