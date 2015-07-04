@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Web;
 using GovHack2015.Logic;
@@ -14,6 +15,9 @@ namespace GovHack2015.Globals
         //      You can assign default values here!
         private List<Article> _abcData = null;
         private DateTime _abcDataLastUpdated;
+
+        private string _userLatitude;
+        private string _userLongitude;
         
         private SessionData()
         {
@@ -49,6 +53,17 @@ namespace GovHack2015.Globals
 
                 return _abcData;
             }
+        }
+
+        public string UserLat {
+            get { return _userLatitude; }
+            set { _userLatitude = value; }
+        }
+
+        public string UserLon
+        {
+            get { return _userLongitude; }
+            set { _userLongitude = value; }
         }
     }
 }
