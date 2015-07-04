@@ -10,7 +10,7 @@ namespace GovHack2015.Models
         public string Title { get; set; }
         public string Lat { get; set; }
         public string Lon { get; set; }
-        public string Symbol { get; set; }
+        public string Icon { get; set; }
         
     }
 }
