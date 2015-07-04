@@ -19,13 +19,16 @@ namespace GovHack2015.Logic
         public List<Article> PopulateArticles()
         {
             var articles = new List<Article>();
-            using (var webClient = new WebClient())
-            {
-                var json = webClient.DownloadString(articlesUrl);
+        
+                using (var webClient = new WebClient())
+                {
+                    var json = webClient.DownloadString(articlesUrl);
 
-                articles = JsonConvert.DeserializeObject<List<Article>>(json);
-                // Now parse with JSON.Net
-            }
+                    articles = JsonConvert.DeserializeObject<List<Article>>(json);
+                    // Now parse with JSON.Net
+                }
+
+
             return articles;
         }
 
@@ -33,9 +36,18 @@ namespace GovHack2015.Logic
         {
             var dtoContent = new DtoContent();
 
-            var articles = PopulateArticles();
-            dtoContent.ArticleMarkerList = ObtainMarkers(articles);
-            dtoContent.ArticleList = articles;
+            try
+            {
+                var articles = PopulateArticles();
+                dtoContent.ArticleMarkerList = ObtainMarkers(articles);
+                dtoContent.ArticleList = articles;
+            }
+            catch(Exception ex)
+            {
+                dtoContent.Error = ex.ToString();
+            }
+
+            
             return dtoContent;
         }
 
