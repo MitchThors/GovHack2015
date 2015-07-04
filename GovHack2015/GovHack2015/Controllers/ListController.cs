@@ -18,11 +18,15 @@ namespace GovHack2015.Controllers
             if (Session["DtoContent"] != null)
             {
                 dtoContent = Session["DtoContent"] as DtoContent;
-                return View(dtoContent);
+
             }
-                
-            var ga = new GetArticles();
-            dtoContent = ga.PopulateDtoContent();
+            else
+            {
+                var ga = new GetArticles();
+                dtoContent = ga.PopulateDtoContent();
+            }
+
+            dtoContent.ArticleList = dtoContent.ArticleList.OrderByDescending(x => x.Date);
             return View(dtoContent);
         }
 

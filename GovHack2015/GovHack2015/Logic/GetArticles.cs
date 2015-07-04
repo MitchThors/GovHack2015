@@ -22,6 +22,8 @@ namespace GovHack2015.Logic
             {
                 var json = webClient.DownloadString(articlesUrl);
                 articles = JsonConvert.DeserializeObject<List<Article>>(json);
+
+           
                 
                 // Now parse with JSON.Net
             }

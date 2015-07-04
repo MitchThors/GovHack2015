@@ -1,6 +1,49 @@
 ﻿@using GovHack2015.Logic
 @using GovHack2015.Models
 @model GovHack2015.Models.DtoContent
+<script src="~/Content/timeliner-master/js/jquery.min.js"></script>
+<link href="~/Content/timeliner-master/css/timeliner.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="~/Content/timeliner-master/js/timeliner.min.js"></script>
+<link href="~/Content/timeliner-master/css/timeliner.min.css" rel="stylesheet" />
+<script>
+    $(document).ready(function () {
+        $.timeliner({});
+    });
+</script>
+
+<div id="timeline" class="timeline-container">
+    <div class="timeline-wrapper">
+        <h2 class="timeline-time">1976</h2>
+
+        <dl class="timeline-series">
+
+            <dt class="timeline-event" id="event01"><a>Event</a></dt>
+            <dd class="timeline-event-content" id="event01EX">
+                <p>Content about the event goes here.</p>
+            </dd>
+
+            <dt class="timeline-event" id="event02"><a>Another Event</a></dt>
+            <dd class="timeline-event-content" id="event02EX">
+                <p>Content about the other event.</p>
+            </dd>
+
+        </dl>
+    </div>
+    <div class="timeline-wrapper">
+        <h2 class="timeline-time">1984</h2>
+
+        <dl class="timeline-series">
+
+            <dt class="timeline-event" id="event03"><a>Yet Another Event</a></dt>
+            <dd class="timeline-event-content" id="event03EX">
+                <p>Content about the event goes here.</p>
+            </dd>
+
+        </dl>
+    </div>
+</div>
+
+
 <table class="form-control table-striped">
  
 
