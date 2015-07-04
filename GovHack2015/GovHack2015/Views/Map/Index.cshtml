@@ -6,28 +6,40 @@
 @{
     var GoogleMapsAPIKey = GlobalData.GoogleMapsApiKey;
 }
-<div class="row">
-    <div class="col-md-12">
-        <div class="gmaps-wrapper">
-            <div class="dmxGoogleMaps" id="map-canvas" style="width: 100%; height: 100%">
-            </div>
-        </div>
-    </div>
-</div>
+
+    <div id="map-canvas"></div>
 
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArSOGYdjPu1mwTjBL0u6FIXoL27477dgA">
+
 </script>
+    @Scripts.Render("~/bundles/jquery")
+    
+    @Scripts.Render("~/Scripts/Maps.js")
+@Scripts.Render("~/Scripts/geolocationmarker.js")
+
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="gmaps-wrapper">
+                <div class="dmxGoogleMaps" id="map-canvas" style="width: 100%; height: 100%">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArSOGYdjPu1mwTjBL0u6FIXoL27477dgA">
+    </script>*@
 
 
 @*<div id="processingOverlay">
-    <div id="processingContent">
-        <p id="processingSpinner">
-            Working....
-        </p>
-    </div>
-</div>*@
+        <div id="processingContent">
+            <p id="processingSpinner">
+                Working....
+            </p>
+        </div>
+    </div>*@
 
-@Scripts.Render("~/bundles/jquery")
+
 @*@Scripts.Render("~/Scripts/spin.min.js")*@
-@Scripts.Render("~/Scripts/Maps.js")
+
