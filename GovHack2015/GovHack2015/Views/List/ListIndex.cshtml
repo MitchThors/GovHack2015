@@ -4,47 +4,64 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <link rel="stylesheet" href="../../Content/timeliner-master/css/timeliner.min.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../Content/timeliner-master/css/responsive.css" type="text/css" media="screen">
 <script type="text/javascript" src="../../Content/timeliner-master/js/timeliner.min.js"></script>
 
-<div id="timeline" class="timeline-container">
-    <div class="timeline-wrapper">
+
+@if (Model.Error != null)
+{
+    <div class="alert-info">@Model.Error</div>
+}
+else
+{
+
+    <div id="timeline" class="timeline-container">
+
         @{
-            int count;
-            DateTime date = DateTime.MinValue;
+    DateTime date = DateTime.MinValue;
         }
         @*@for (var i = 0; i < Model.ArticleList.Count(); i++)
-        {*@
+            {*@
 
-        @for (var i = 0; i < 500; i++)
+        @for (var i = 0; i < Model.ArticleList.Count(); i++)
         {
-            <h2 class="timeline-time">@Model.ArticleList.ElementAt(i).DateTime.Year @Model.ArticleList.ElementAt(i).DateTime.Month</h2>
-            <dl class="timeline-series">
+            <div class="timeline-wrapper ">
+                <h2 class="timeline-time">@Model.ArticleList.ElementAt(i).DateTime.ToString("MMMM dd, yyyy")</h2>
+                <dl class="timeline-series">
 
-                @{ date = Model.ArticleList.ElementAt(i).DateTime; }
+                    @{ date = Model.ArticleList.ElementAt(i).DateTime; }
 
-                @while ((date.Year == Model.ArticleList.ElementAt(i).DateTime.Year) && (date.Month == Model.ArticleList.ElementAt(i).DateTime.Month))
-                {
-                    <dt class="timeline-event" id="event@count">
-                        <a>@Model.ArticleList.ElementAt(i).Title</a>
-                    </dt>
-                    <dd class="timeline-event-content" id="eventEX@count">
-                        <p>@Model.ArticleList.ElementAt(i).Keywords</p>
-                    </dd>
-                    i++;
-                }
+                    @while (date == Model.ArticleList.ElementAt(i).DateTime)
+                    {
+                        <dt class="timeline-event" id="event@i">
+                            <a>@Model.ArticleList.ElementAt(i).Title</a>
+                        </dt>
+                        <dd class="timeline-event-content" id="eventEX@i">
+                            <p>@Model.ArticleList.ElementAt(i).Keywords</p>
+                        </dd>
+                        i++;
+                        if (i > Model.ArticleList.Count()-1)
+                        {
+                            break;
+                        }
 
-            </dl>
+                    }
+
+                </dl>
+            </div>
         }
-            
-             
+
+
 
     </div>
-</div>
+
+}
+
 
 <script>
     $(document).ready(function () {
-        alert("reached 1");
+    
         $.timeliner({});
-        alert("reached2");
+
     });
 </script>

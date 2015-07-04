@@ -27,16 +27,19 @@ namespace GovHack2015.Controllers
                 dtoContent = ga.PopulateDtoContent();
             }
 
-
-            foreach (var article in dtoContent.ArticleList)
+            if (dtoContent.ArticleList != null)
             {
-                if (article.Date.Length < 10)
-                    article.Date = "0" + article.Date;
-                article.DateTime = DateTime.ParseExact(article.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-  
-            }
+                foreach (var article in dtoContent.ArticleList)
+                {
+                    if (article.Date.Length < 10)
+                        article.Date = "0" + article.Date;
+                    article.DateTime = DateTime.ParseExact(article.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
-            dtoContent.ArticleList = dtoContent.ArticleList.OrderByDescending(x => x.DateTime);
+                }
+
+                dtoContent.ArticleList = dtoContent.ArticleList.OrderByDescending(x => x.DateTime);
+            }
+            
             return View(dtoContent);
         }
 
