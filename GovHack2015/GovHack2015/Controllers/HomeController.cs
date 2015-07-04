@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GovHack2015.Globals;
 using GovHack2015.Logic;
 
 namespace GovHack2015.Controllers
@@ -27,6 +28,19 @@ namespace GovHack2015.Controllers
 
             return View();
         }
+        public bool UpdateUserLocation(string latitude, string longitude)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(latitude)) SessionData.Current.UserLat = latitude;
+                if (!String.IsNullOrEmpty(longitude)) SessionData.Current.UserLon = longitude;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GovHack2015.Globals;
 using GovHack2015.Logic;
 using GovHack2015.Models;
 
@@ -24,7 +25,15 @@ namespace GovHack2015.Controllers
             else
             {
                 var ga = new GetArticles();
-                dtoContent = ga.PopulateDtoContent();
+                if (SessionData.Current.UserLat != null && SessionData.Current.UserLon != null)
+                {
+                    dtoContent = ga.PopulateDtoContent(SessionData.Current.UserLat, SessionData.Current.UserLon, 200);
+                }
+                else
+                {
+                    dtoContent = ga.PopulateDtoContent();
+                    
+                }
             }
 
             if (dtoContent.ArticleList != null)
