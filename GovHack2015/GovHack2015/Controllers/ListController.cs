@@ -12,12 +12,18 @@ namespace GovHack2015.Controllers
     {
 
         // GET: List
-        public ActionResult ListIndex(DtoContent content = null)
+        public ActionResult ListIndex()
         {
-            if (content.ArticleList != null) return View(content);
+            DtoContent dtoContent;
+            if (Session["DtoContent"] != null)
+            {
+                dtoContent = Session["DtoContent"] as DtoContent;
+                return View(dtoContent);
+            }
+                
             var ga = new GetArticles();
-            content = ga.PopulateDtoContent();
-            return View(content);
+            dtoContent = ga.PopulateDtoContent();
+            return View(dtoContent);
         }
 
         [HttpPost]
@@ -29,7 +35,9 @@ namespace GovHack2015.Controllers
             var model = new DtoContent();
             model.ArticleList = articles;
 
-            return RedirectToAction("ListIndex", model);
+            Session["DtoContent"] = model;
+
+            return RedirectToAction("ListIndex");
         } 
 
     }
