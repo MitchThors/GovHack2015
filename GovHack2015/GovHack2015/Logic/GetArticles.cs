@@ -29,11 +29,21 @@ namespace GovHack2015.Logic
             return articles;
         }
         
-        public DtoContent PopulateDtoContent()
+        public DtoContent PopulateDtoContent(int limit = -1)
         {
             var dtoContent = new DtoContent();
 
             var articles = GlobalData.ABCData;
+            if (limit > -1)
+            {
+                var hold = new List<Article>();
+                for (int ii = 0; ii < limit; ii++)
+                {
+                    hold.Add(articles.ToList()[ii]);
+                }
+                articles = hold;
+            }
+            
             dtoContent.ArticleMarkerList = ObtainMarkers(articles);
             dtoContent.ArticleList = articles;
             return dtoContent;

@@ -1,10 +1,9 @@
 ﻿@using GovHack2015.Logic
 @using GovHack2015.Models
 @model GovHack2015.Models.DtoContent
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../Content/timeliner-master/css/timeliner.min.css" type="text/css" media="screen">
-<link rel="stylesheet" href="../../Content/timeliner-master/css/responsive.css" type="text/css" media="screen">
+<link rel="stylesheet" href="../../Content/timeliner-master/css/timeliner.css" type="text/css" media="screen">
 <script type="text/javascript" src="../../Content/timeliner-master/js/timeliner.min.js"></script>
 
 
@@ -37,13 +36,17 @@ else
                             <a>@Model.ArticleList.ElementAt(i).Title</a>
                         </dt>
                         <dd class="timeline-event-content" id="event@(i)EX">
-                            <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250px"/><br/>
+
+                            <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250" /><br />
                             <p>@Model.ArticleList.ElementAt(i).Subjects</p>
-                            <p><a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a>
+
+
+                            <p>
+                                <a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a>
                             </p>
                         </dd>
                         i++;
-                        if (i > Model.ArticleList.Count()-1)
+                        if (i > Model.ArticleList.Count() - 1)
                         {
                             break;
                         }
@@ -62,7 +65,7 @@ else
 
 
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         function makeRequest(url) {
             if (window.XMLHttpRequest) { // Mozilla, Safari, ...
@@ -94,7 +97,7 @@ else
                 makeRequest(hr + "/Home/UpdateUserLocation?latitude=" + position.coords.latitude + "&longitude=" + position.coords.longitude);
             });
         }
-      
+
         $.timeliner({});
 
     });

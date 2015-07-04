@@ -79,3 +79,8 @@ span.glyphicon-map-marker {
      width: 100% !important;
      height: 100% !important;
 }
+
+/*timeliner*/
+.timeline-event-content > img {
+    float: left;
+}

@@ -31,7 +31,7 @@ namespace GovHack2015.Controllers
                 }
                 else
                 {
-                    dtoContent = ga.PopulateDtoContent();
+                    dtoContent = ga.PopulateDtoContent(500);
                     
                 }
             }
