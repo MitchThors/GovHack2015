@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-
-namespace GovHack2015.Global
+namespace AdminUI
 {
     //  Utilises a singelton design pattern to access session variables as a strongly typed bag of data.
     public class SessionData
@@ -30,7 +29,7 @@ namespace GovHack2015.Global
                 return sessionData;
             }
         }
-        
+
         public int SourceID { get; set; }
     }
 }

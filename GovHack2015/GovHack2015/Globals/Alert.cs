@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace GovHack2015.Global
+namespace GovHack2015.Globals
 {
     public class Alert
     {

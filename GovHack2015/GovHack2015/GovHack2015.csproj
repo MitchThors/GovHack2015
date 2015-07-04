@@ -110,8 +110,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="Views\Map\" />
-    <Folder Include="Views\Timeline\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -122,10 +120,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Global\Alert.cs" />
-    <Compile Include="Global\GlobalData.cs" />
-    <Compile Include="Global\GlobalMessages.cs" />
-    <Compile Include="Global\SessionData.cs" />
+    <Compile Include="Globals\Alert.cs" />
+    <Compile Include="Globals\GlobalData.cs" />
+    <Compile Include="Globals\GlobalMessages.cs" />
+    <Compile Include="Globals\SessionData.cs" />
+    <Compile Include="Logic\Genius.cs" />
     <Compile Include="Logic\GetArticles.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -145,7 +144,6 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Scripts\spin.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

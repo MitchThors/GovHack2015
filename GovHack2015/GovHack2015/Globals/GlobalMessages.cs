@@ -1,4 +1,4 @@
-namespace GovHack2015.Global
+namespace GovHack2015.Globals
 {
     public static class GlobalMessages
     {
