@@ -91,6 +91,7 @@ function alertContents() {
                     ib.setContent(this.get('title'));
                     ib.open(map, this);
                 });
+                closeInfoBox();
             }
             alert("Loaded");
         } else {
@@ -100,6 +101,25 @@ function alertContents() {
     }
 }
 
+function displayRoute(start, end, travelMode) {
+
+    
+
+    var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
+    directionsDisplay.setMap(map); // map should be already initialized.
+
+    var request = {
+        origin: start,
+        destination: end,
+        travelMode: travelMode
+    };
+    var directionsService = new google.maps.DirectionsService();
+    directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+            directionsDisplay.setDirections(response);
+        }
+    });
+}
 
 function handleNoGeolocation(errorFlag) {
     if (errorFlag) {
