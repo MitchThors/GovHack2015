@@ -8,7 +8,7 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div id="wrap">
+<div id="wrap">
         <div class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -26,9 +26,9 @@
                             @using(Html.BeginForm("listSearch", "List")){
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
-                                <span class="input-group-btn">
+                                @*<span class="input-group-btn">
                                     <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
-                                </span>
+                                </span>*@
                             </div>
                             }
 
@@ -42,7 +42,7 @@
 
             @RenderBody()
 
-            @Scripts.Render("~/bundles/jquery")
+            @*@Scripts.Render("~/bundles/jquery")*@
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)
         </div>
@@ -67,5 +67,5 @@
                 </div>
         </div>
     </footer>
-</body>
-</html>
+    </body>
+    </html>

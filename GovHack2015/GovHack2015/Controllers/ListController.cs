@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -26,7 +27,16 @@ namespace GovHack2015.Controllers
                 dtoContent = ga.PopulateDtoContent();
             }
 
-            dtoContent.ArticleList = dtoContent.ArticleList.OrderByDescending(x => x.Date);
+
+            foreach (var article in dtoContent.ArticleList)
+            {
+                if (article.Date.Length < 10)
+                    article.Date = "0" + article.Date;
+                article.DateTime = DateTime.ParseExact(article.Date, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+  
+            }
+
+            dtoContent.ArticleList = dtoContent.ArticleList.OrderByDescending(x => x.DateTime);
             return View(dtoContent);
         }
 

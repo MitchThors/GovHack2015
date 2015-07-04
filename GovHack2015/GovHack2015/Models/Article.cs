@@ -11,6 +11,7 @@ namespace GovHack2015.Models
         public string Title { get; set; }
         public string Url { get; set; }
         public string Date { get; set; }
+        public DateTime DateTime { get; set; }
         [JsonProperty("Primary image")]
         public string PrimaryImage { get; set; }
         [JsonProperty("Primary image caption")]
