@@ -8,43 +8,47 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
 
-                    <ul class="nav navbar-nav">
-                        <li>
-                            @using (Html.BeginForm("listSearch", "List"))
-                            {
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
-                                    @*<span class="input-group-btn">
-                                            <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
-                                        </span>*@
-                                </div>
-                            }
+                <ul class="nav navbar-nav">
+                    <li>
+                        @using (Html.BeginForm("listSearch", "List"))
+                        {
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
+                                @*<span class="input-group-btn">
+                                        <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
+                                    </span>*@
+                            </div>
+                        }
 
 
-                        </li>
-                    </ul>
-                </div>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="container body-content" style="padding-top: 100px;">
+    </div>
+@*<div class="container body-content" style="padding-top: 100px;">
+        @RenderBody()
+    </div>*@
 
-            @RenderBody()
-        </div>
-        @*@Scripts.Render("~/bundles/jquery")*@
-        @Scripts.Render("~/bundles/bootstrap")
-        @RenderSection("scripts", required: false)
+
+<div class="container-map">
+    @RenderBody()
+    @*<div id="map-canvas"></div>*@
+    @Scripts.Render("~/bundles/bootstrap")
+    
+    @RenderSection("scripts", required: false)
 
     <footer class="footer">
         <div class="container main-button">
@@ -57,5 +61,12 @@
             </a>
         </div>
     </footer>
+</div>
+
+
+
+
+        @*@Scripts.Render("~/bundles/jquery")*@
+       
 </body>
 </html>
