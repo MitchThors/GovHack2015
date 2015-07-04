@@ -7,7 +7,7 @@ using GovHack2015.Logic;
 
 namespace GovHack2015.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {

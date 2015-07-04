@@ -115,10 +115,16 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Globals\Alert.cs" />
+    <Compile Include="Globals\GlobalData.cs" />
+    <Compile Include="Globals\GlobalMessages.cs" />
+    <Compile Include="Globals\SessionData.cs" />
+    <Compile Include="Logic\Genius.cs" />
     <Compile Include="Logic\GetArticles.cs" />
     <Compile Include="Models\Article.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
