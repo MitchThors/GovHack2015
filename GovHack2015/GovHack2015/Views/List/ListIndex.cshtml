@@ -33,10 +33,10 @@ else
 
                     @while (date == Model.ArticleList.ElementAt(i).DateTime)
                     {
-                        <dt class="timeline-event" id="event@i">
+                        <dt class="timeline-event" id="event@(i)">
                             <a>@Model.ArticleList.ElementAt(i).Title</a>
                         </dt>
-                        <dd class="timeline-event-content" id="eventEX@i">
+                        <dd class="timeline-event-content" id="event@(i)EX">
                             <p>@Model.ArticleList.ElementAt(i).Subjects</p>
                         </dd>
                         i++;
