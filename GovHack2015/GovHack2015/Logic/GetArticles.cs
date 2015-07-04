@@ -21,8 +21,8 @@ namespace GovHack2015.Logic
             using (var webClient = new WebClient())
             {
                 var json = webClient.DownloadString(articlesUrl);
-
                 articles = JsonConvert.DeserializeObject<List<Article>>(json);
+                
                 // Now parse with JSON.Net
             }
             return articles;
@@ -30,10 +30,16 @@ namespace GovHack2015.Logic
 
         public DtoContent PopulateDtoContent()
         {
-            var dtoContent = new DtoContent();
-            dtoContent.ArticleList = PopulateArticles();
+            var dtoContent = new DtoContent {ArticleList = PopulateArticles()};
 
             return dtoContent;
+        }
+
+        public IEnumerable<Article> SearchArticles(string search)
+        {
+            var articles = (IEnumerable<Article>)PopulateArticles();
+            articles = articles.Where(x => x.Title.Contains(search));
+            return articles;
         } 
 
 
