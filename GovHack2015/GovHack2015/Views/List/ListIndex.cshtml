@@ -38,6 +38,7 @@ else
                         </dt>
                         <dd class="timeline-event-content" id="event@(i)EX">
                             <p>@Model.ArticleList.ElementAt(i).Subjects</p>
+                            <p><a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a></p>
                         </dd>
                         i++;
                         if (i > Model.ArticleList.Count()-1)
