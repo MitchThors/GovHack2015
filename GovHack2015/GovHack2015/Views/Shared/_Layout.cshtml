@@ -17,14 +17,23 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Take me there Gov!", "Index", "Home", null, new { @class = "navbar-brand" })
                 </div>
                 <div class="navbar-collapse collapse">
-                    s
+                    
                     <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>
+                            @using(Html.BeginForm("listSearch", "List")){
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default glyphicon glyphicon-search" type="button">Go!</button>
+                                </span>
+                            </div>
+                            }
+
+
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -42,16 +51,20 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted">
-                @{ Html.ActionLink("List", "ListIndex", "List", new { @class="btn btn-default"}, null); }
-                <a class="btn btn-default" href="../List/ListIndex.cshtml" role="button">
+            <div class="row">
+            <div class="col-xs-6">
+
+                <a class="btn btn-default" href="../List/ListIndex" role="button">
                     <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-  
                 </a>
-                <a class="btn btn-default" href="/Views/Map/Index.cshtml" role="button">
-                    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                </a>
-            </p>
+            </div>
+                <div class="col-xs-6">
+
+                    <a class="btn btn-default" href="../Map/Index" role="button">
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                    </a>
+                </div>
+                </div>
         </div>
     </footer>
 </body>
