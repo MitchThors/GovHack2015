@@ -57,7 +57,12 @@ namespace GovHack2015.Logic
         }
 
 
-
+        public IEnumerable<Article> SearchArticles(string search)
+        {
+            var articles = (IEnumerable<Article>)PopulateArticles();
+            articles = articles.Where(x => x.Title.Contains(search));
+            return articles;
+        } 
     }
 
     
