@@ -14,6 +14,7 @@ namespace GovHack2015.Logic
     public class GetArticles
     {
         private string articlesUrl = @"http://data.gov.au/dataset/3fd356c6-0ad4-453e-82e9-03af582024c3/resource/3182591a-085a-465b-b8e5-6bfd934137f1/download/Localphotostories2009-2014-JSON.json";
+        private string iconURL = @"";
 
         public List<Article> PopulateArticles()
         {
@@ -31,10 +32,29 @@ namespace GovHack2015.Logic
         public DtoContent PopulateDtoContent()
         {
             var dtoContent = new DtoContent();
-            dtoContent.ArticleList = PopulateArticles();
+
+            var articles = PopulateArticles();
+            //var filteredARticles = GetArticlesFromLocation(latitude, longitude, radius);
+            
+            dtoContent.ArticleMarkerList = ObtainMarkers(articles);
 
             return dtoContent;
-        } 
+        }
+
+        //private List<Article> GetArticlesFromLocation(string latitude, string longitude, int radius)
+        //{
+            
+        //}
+
+        public IEnumerable<IMarker> ObtainMarkers(IEnumerable<Article> articles)
+        {
+            var markers = articles.Select(article => new ArticleMarker()
+            {
+                Icon = iconURL, Lat = article.Latitude, Lon = article.Longitude, Title = article.Title
+            }).ToList();
+
+            return markers;
+        }
 
 
 

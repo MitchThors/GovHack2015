@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GovHack2015.Models
 {
-    public  interface IMarker
+    public interface IMarker
     {
         string Title { get; set; }
         string Lat { get; set; }

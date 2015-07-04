@@ -7,9 +7,7 @@ namespace GovHack2015.Models
 {
     public class DtoContent
     {
-        public List<Article> ArticleList { get; set; } 
-
-
+        public IEnumerable<IMarker> ArticleMarkerList { get; set; } 
     }
 
 }
