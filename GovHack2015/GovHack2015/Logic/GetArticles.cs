@@ -15,7 +15,6 @@ namespace GovHack2015.Logic
     public class GetArticles
     {
         private string articlesUrl = @"http://data.gov.au/dataset/3fd356c6-0ad4-453e-82e9-03af582024c3/resource/3182591a-085a-465b-b8e5-6bfd934137f1/download/Localphotostories2009-2014-JSON.json";
-        private string iconURL = @"";
 
         public List<Article> PopulateArticles()
         {
@@ -29,14 +28,12 @@ namespace GovHack2015.Logic
             }
             return articles;
         }
-
-
-
+        
         public DtoContent PopulateDtoContent()
         {
             var dtoContent = new DtoContent();
 
-            var articles = SessionData.Current.ABCData;
+            var articles = GlobalData.ABCData;
             dtoContent.ArticleMarkerList = ObtainMarkers(articles);
             dtoContent.ArticleList = articles;
             return dtoContent;
@@ -46,7 +43,7 @@ namespace GovHack2015.Logic
         {
             var dtoContent = new DtoContent();
 
-            var articles = SessionData.Current.ABCData;
+            var articles = GlobalData.ABCData;
             var filteredARticles = GetArticlesFromLocation(articles, latitude, longitude, radius);
             dtoContent.ArticleMarkerList = ObtainMarkers(filteredARticles);
             dtoContent.ArticleList = filteredARticles;
@@ -76,7 +73,10 @@ namespace GovHack2015.Logic
         {
             var markers = articles.Select(article => new ArticleMarker()
             {
-                Icon = iconURL, Lat = article.Latitude, Lon = article.Longitude, Title = article.Title
+                Icon = GlobalData.IconPin,
+                Lat = article.Latitude,
+                Lon = article.Longitude,
+                Title = article.Title
             }).ToList();
 
             return markers;
@@ -85,7 +85,7 @@ namespace GovHack2015.Logic
 
         public IEnumerable<Article> SearchArticles(string search)
         {
-            var articles = SessionData.Current.ABCData;
+            var articles = GlobalData.ABCData;
             articles = articles.Where(x => x.Title.Contains(search));
             return articles;
         } 

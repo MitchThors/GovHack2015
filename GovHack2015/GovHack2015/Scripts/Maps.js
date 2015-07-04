@@ -1,4 +1,31 @@
-﻿var map;
+﻿$(document).ready(
+    applySpinner()
+);
+
+function applySpinner() {
+        $("#processingOverlay").fadeIn();
+        var opts = {
+            lines: 12, // The number of lines to draw
+            length: 7, // The length of each line
+            width: 4, // The line thickness
+            radius: 10, // The radius of the inner circle
+            color: '#000', // #rgb or #rrggbb
+            speed: 1, // Rounds per second
+            trail: 60, // Afterglow percentage
+            shadow: false, // Whether to render a shadow
+            hwaccel: false // Whether to use hardware acceleration
+        };
+        var target = document.getElementById('processingOverlay');
+        var spinner = new Spinner(opts).spin(target);
+}
+
+function removeSpinner() {
+    $('#processingOverlay').data('spinner').stop();
+}
+
+
+
+var map;
 var ibs = [];
 
 var closeInfoBox = function () {
@@ -8,8 +35,6 @@ var closeInfoBox = function () {
 }
 
 function initialize() {
-
-
     var mapOptions = {
         zoom: 18
     };
@@ -75,10 +100,20 @@ function alertContents() {
 
             for (i = 0; i < json.length; i++) {
                 var latLng = new google.maps.LatLng(json[i].Lat, json[i].Lon);
+
+                var image = {
+                    url: "data:image/png;base64," + json[i].Icon + "",
+                    size: new google.maps.Size(125, 125),
+                    scaledSize: new google.maps.Size(50, 50),
+                    origin: new google.maps.Point(0, 0)
+                };
+
                 var marker = new google.maps.Marker({
                     position: latLng,
-                    map: map
+                    map: map,
+                    icon: image
                 });
+
                 marker.setTitle(json[i].Title);
                 var ibIndex = ibs.push(new google.maps.InfoWindow({
                     map: map
@@ -91,8 +126,11 @@ function alertContents() {
                     ib.setContent(this.get('title'));
                     ib.open(map, this);
                 });
+
+
             }
-            alert("Loaded");
+            //alert("Loaded");
+            removeSpinner();
         } else {
             //TODO display proper error
             alert('There was a problem with the request.');

@@ -19,5 +19,15 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArSOGYdjPu1mwTjBL0u6FIXoL27477dgA">
 </script>
 
-@Scripts.Render("~/Scripts/Maps.js")
+
+<div id="processingOverlay">
+    <div id="processingContent">
+        <p id="processingSpinner">
+            Working....
+        </p>
+    </div>
+</div>
+
 @Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/Scripts/spin.min.js")
+@Scripts.Render("~/Scripts/Maps.js")

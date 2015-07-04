@@ -12,9 +12,6 @@ namespace GovHack2015.Globals
     {
         //  Note: Private Constructor...
         //      You can assign default values here!
-        private List<Article> _abcData = null;
-        private DateTime _abcDataLastUpdated;
-        
         private SessionData()
         {
             
@@ -35,20 +32,6 @@ namespace GovHack2015.Globals
             }
         }
 
-        public IEnumerable<Article> ABCData
-        {
-            get
-            {
-                if ((_abcData == null) || (!_abcData.Any()) || (_abcDataLastUpdated < DateTime.Now.AddHours(-1)))
-                {
-                    var getArticles = new GetArticles();
-                    _abcData = getArticles.PopulateArticles();
-                    _abcDataLastUpdated = DateTime.Now;
-
-                }
-
-                return _abcData;
-            }
-        }
+        
     }
 }
