@@ -22,8 +22,8 @@ namespace GovHack2015.Logic
             using (var webClient = new WebClient())
             {
                 var json = webClient.DownloadString(articlesUrl);
+
                 articles = JsonConvert.DeserializeObject<List<Article>>(json);
-                
                 // Now parse with JSON.Net
             }
             return articles;
@@ -32,18 +32,60 @@ namespace GovHack2015.Logic
         public DtoContent PopulateDtoContent()
         {
             var dtoContent = new DtoContent();
-            dtoContent.ArticleList = PopulateArticles();
 
             var articles = PopulateArticles();
-            //var filteredARticles = GetArticlesFromLocation(latitude, longitude, radius);
-            
             dtoContent.ArticleMarkerList = ObtainMarkers(articles);
-
+            dtoContent.ArticleList = articles;
             return dtoContent;
+        }
+
+        public DtoContent PopulateDtoContent(string latitude, string longitude, double radius)
+        {
+            var dtoContent = new DtoContent();
+
+            var articles = PopulateArticles();
+            var filteredARticles = GetArticlesFromLocation(articles, latitude, longitude, radius);
+            dtoContent.ArticleMarkerList = ObtainMarkers(filteredARticles);
+            dtoContent.ArticleList = filteredARticles;
+            return dtoContent;
+        }
+
+        private List<Article> GetArticlesFromLocation(IEnumerable<Article> articles, string latitude, string longitude, double radius)
+        {
+            var gen = new Genius();
+            var listToReturn = new List<Article>();
+            foreach (var art in articles)
+            {
+                if (art.Longitude.Trim() != String.Empty && art.Latitude.Trim() != String.Empty)
+                {
+                    if (gen.WithinDistance(double.Parse(art.Latitude), double.Parse(art.Longitude), double.Parse(latitude), double.Parse(longitude), radius))
+                    {
+                        listToReturn.Add(art);
+                    }
+                }
+                
+            }
+            return listToReturn;
+        }
+
+
+        public IEnumerable<IMarker> ObtainMarkers(IEnumerable<Article> articles)
+        {
+            var markers = articles.Select(article => new ArticleMarker()
+            {
+                Icon = iconURL, Lat = article.Latitude, Lon = article.Longitude, Title = article.Title
+            }).ToList();
+
+            return markers;
+        }
+
+
+        public IEnumerable<Article> SearchArticles(string search)
+        {
+            var articles = (IEnumerable<Article>)PopulateArticles();
+            articles = articles.Where(x => x.Title.Contains(search));
+            return articles;
         } 
-
-
-
     }
 
     
