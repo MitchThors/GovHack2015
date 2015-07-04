@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Policy;
 using System.Web;
+using GovHack2015.Globals;
 using GovHack2015.Models;
 using Newtonsoft.Json;
 
@@ -29,11 +30,13 @@ namespace GovHack2015.Logic
             return articles;
         }
 
+
+
         public DtoContent PopulateDtoContent()
         {
             var dtoContent = new DtoContent();
 
-            var articles = PopulateArticles();
+            var articles = SessionData.Current.ABCData;
             dtoContent.ArticleMarkerList = ObtainMarkers(articles);
             dtoContent.ArticleList = articles;
             return dtoContent;
@@ -43,7 +46,7 @@ namespace GovHack2015.Logic
         {
             var dtoContent = new DtoContent();
 
-            var articles = PopulateArticles();
+            var articles = SessionData.Current.ABCData;
             var filteredARticles = GetArticlesFromLocation(articles, latitude, longitude, radius);
             dtoContent.ArticleMarkerList = ObtainMarkers(filteredARticles);
             dtoContent.ArticleList = filteredARticles;
@@ -82,7 +85,7 @@ namespace GovHack2015.Logic
 
         public IEnumerable<Article> SearchArticles(string search)
         {
-            var articles = (IEnumerable<Article>)PopulateArticles();
+            var articles = SessionData.Current.ABCData;
             articles = articles.Where(x => x.Title.Contains(search));
             return articles;
         } 
