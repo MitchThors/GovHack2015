@@ -23,7 +23,7 @@ namespace GovHack2015.Controllers
         public ContentResult GetMarkers(string latitude, string longitude)
         {
             var ga = new GetArticles();
-            double radius = 100.0;
+            double radius = 200.0;
             var markers = ga.PopulateDtoContent(latitude, longitude, radius).ArticleMarkerList;
 
             var markersJSON = JsonConvert.SerializeObject(markers);
