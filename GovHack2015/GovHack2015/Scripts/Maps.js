@@ -1,15 +1,22 @@
 ﻿var map;
+var ibs = [];
+
+var closeInfoBox = function () {
+    for (var i in ibs) {
+        ibs[i].close();
+    }
+}
 
 function initialize() {
+
+
     var mapOptions = {
         zoom: 18
     };
 
-    map = new google.maps.Map(
-        document.getElementById('map-canvas'),
-        mapOptions
-    );
-
+    map = new google.maps.Map(document.getElementById('map-canvas'),
+        mapOptions);
+    
     // Try HTML5 geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -19,7 +26,7 @@ function initialize() {
             var infowindow = new google.maps.InfoWindow({
                 map: map,
                 position: pos,
-                content: 'You are here!'
+                content: 'Location found using HTML5.'
             });
             GetMarkers(position.coords.latitude, position.coords.longitude);
             map.setCenter(pos);
@@ -73,6 +80,17 @@ function alertContents() {
                     map: map
                 });
                 marker.setTitle(json[i].Title);
+                var ibIndex = ibs.push(new google.maps.InfoWindow({
+                    map: map
+                })) - 1, ib = ibs[ibIndex];
+
+                google.maps.event.addListener(marker, "click", function (evt) {
+                    closeInfoBox();
+  
+                    ib.setPosition(marker.position);
+                    ib.setContent(this.get('title'));
+                    ib.open(map, this);
+                });
             }
             alert("Loaded");
         } else {
@@ -81,6 +99,7 @@ function alertContents() {
         }
     }
 }
+
 
 function handleNoGeolocation(errorFlag) {
     if (errorFlag) {
