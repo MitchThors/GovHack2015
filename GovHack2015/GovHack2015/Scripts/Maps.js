@@ -1,5 +1,5 @@
 ﻿$(document).ready(
-    applySpinner()
+    //applySpinner()
 );
 
 function applySpinner() {
@@ -103,9 +103,9 @@ function alertContents() {
 
                 var image = {
                     url: "data:image/png;base64," + json[i].Icon + "",
-                    size: new google.maps.Size(125, 125),
-                    scaledSize: new google.maps.Size(50, 50),
-                    origin: new google.maps.Point(0, 0)
+                    size: new google.maps.Size(50, 50),
+                    //scaledSize: new google.maps.Size(50, 50),
+                    //origin: new google.maps.Point(0, 0)
                 };
 
                 var marker = new google.maps.Marker({
