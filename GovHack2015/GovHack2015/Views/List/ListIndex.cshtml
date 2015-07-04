@@ -2,9 +2,8 @@
 @using GovHack2015.Models
 @model GovHack2015.Models.DtoContent
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<link rel="stylesheet" href="../../Content/timeliner-master/css/timeliner.css" type="text/css" media="screen">
-<script type="text/javascript" src="../../Content/timeliner-master/js/timeliner.min.js"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
+
 
 
 @if (Model.Error != null)
@@ -13,8 +12,8 @@
 }
 else
 {
-
-    <div id="timeline" class="timeline-container">
+    <div class="container">
+   <!--  <div id="timeline" class="timeline-container">-->
 
         @{
     DateTime date = DateTime.MinValue;
@@ -24,18 +23,18 @@ else
 
         @for (var i = 0; i < Model.ArticleList.Count(); i++)
         {
-            <div class="timeline-wrapper col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h2 class="timeline-time">@Model.ArticleList.ElementAt(i).DateTime.ToString("MMMM dd, yyyy")</h2>
-                <dl class="timeline-series">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <h2>@Model.ArticleList.ElementAt(i).DateTime.ToString("MMMM dd, yyyy")</h2>
+                <dl>
 
                     @{ date = Model.ArticleList.ElementAt(i).DateTime; }
 
                     @while (date == Model.ArticleList.ElementAt(i).DateTime)
                     {
-                        <dt class="timeline-event" id="event@(i)">
+                        <dt onclick="toggleId(toggle@(i))">
                             <a>@Model.ArticleList.ElementAt(i).Title</a>
                         </dt>
-                        <dd class="timeline-event-content" id="event@(i)EX">
+                        <dd id="toggle@(i)" style="display: none">
 
                             <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250" /><br />
                             <p>@Model.ArticleList.ElementAt(i).Subjects</p>
@@ -65,6 +64,11 @@ else
 
 
 <script>
+
+    function toggleId(id) {
+        $(id).slideToggle("slow");
+
+    };
     $(document).ready(function () {
 
         function makeRequest(url) {
@@ -98,7 +102,9 @@ else
             });
         }
 
-        $.timeliner({});
+        
+
+        //$.timeliner({});
 
     });
 </script>
