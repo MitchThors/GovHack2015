@@ -1,14 +1,14 @@
 ﻿var map;
 
 function initialize() {
-
-
     var mapOptions = {
         zoom: 18
     };
 
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+    map = new google.maps.Map(
+        document.getElementById('map-canvas'),
+        mapOptions
+    );
 
     // Try HTML5 geolocation
     if (navigator.geolocation) {
@@ -19,7 +19,7 @@ function initialize() {
             var infowindow = new google.maps.InfoWindow({
                 map: map,
                 position: pos,
-                content: 'Location found using HTML5.'
+                content: 'You are here!'
             });
             GetMarkers(position.coords.latitude, position.coords.longitude);
             map.setCenter(pos);
@@ -81,7 +81,6 @@ function alertContents() {
         }
     }
 }
-
 
 function handleNoGeolocation(errorFlag) {
     if (errorFlag) {
