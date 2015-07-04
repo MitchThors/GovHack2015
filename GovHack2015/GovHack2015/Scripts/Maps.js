@@ -120,6 +120,7 @@ function alertContents() {
 
             for (i = 0; i < json.length; i++) {
                 var latLng = new google.maps.LatLng(json[i].Lat, json[i].Lon);
+                var contentForMarker = json[i].Content;
                 endPos = latLng;
                 var image = {
                     url: "data:image/png;base64," + json[i].Icon + "",
@@ -144,6 +145,7 @@ function alertContents() {
   
                     ib.setPosition(marker.position);
                     ib.setContent(this.get('title') +
+                        "<br /> <a href=\"" + contentForMarker + "\">Click Here for Article</a> <br />" +
                         "<br/><a href=\"#\" onClick=displayRouteDriving(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Driving directions</a>" +
                         "<br/><a href=\"#\" onClick=displayRouteWalking(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Walking directions</a>");
                     ib.open(map, this);

@@ -11,6 +11,6 @@ namespace GovHack2015.Models
         public string Lat { get; set; }
         public string Lon { get; set; }
         public string Icon { get; set; }
-        
+        public string Content { get; set; }
     }
 }

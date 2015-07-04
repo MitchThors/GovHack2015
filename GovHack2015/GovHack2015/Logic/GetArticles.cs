@@ -86,7 +86,8 @@ namespace GovHack2015.Logic
                 Icon = GlobalData.IconPin,
                 Lat = article.Latitude,
                 Lon = article.Longitude,
-                Title = article.Title
+                Title = article.Title,
+                Content = article.Url
             }).ToList();
 
             return markers;
