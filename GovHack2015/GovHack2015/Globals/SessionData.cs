@@ -10,6 +10,9 @@ namespace GovHack2015.Globals
     //  Utilises a singelton design pattern to access session variables as a strongly typed bag of data.
     public class SessionData
     {
+        private string _userLatitude;
+        private string _userLongitude; 
+
         //  Note: Private Constructor...
         //      You can assign default values here!
         private SessionData()
@@ -31,6 +34,18 @@ namespace GovHack2015.Globals
                 return sessionData;
             }
         }
+
+        public string UserLat
+        {
+            get { return _userLatitude; }
+            set { _userLatitude = value; }
+        }
+
+        public string UserLon
+        {
+            get { return _userLongitude; }
+            set { _userLongitude = value; }
+        }    
 
         
     }
