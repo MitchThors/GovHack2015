@@ -1,32 +1,36 @@
-﻿$(document).ready(
-    //applySpinner()
-);
+﻿//$(document).ready(
+//    //applySpinner()
+//);
 
-function applySpinner() {
-        $("#processingOverlay").fadeIn();
-        var opts = {
-            lines: 12, // The number of lines to draw
-            length: 7, // The length of each line
-            width: 4, // The line thickness
-            radius: 10, // The radius of the inner circle
-            color: '#000', // #rgb or #rrggbb
-            speed: 1, // Rounds per second
-            trail: 60, // Afterglow percentage
-            shadow: false, // Whether to render a shadow
-            hwaccel: false // Whether to use hardware acceleration
-        };
-        var target = document.getElementById('processingOverlay');
-        var spinner = new Spinner(opts).spin(target);
-}
+//function applySpinner() {
+//        $("#processingOverlay").fadeIn();
+//        var opts = {
+//            lines: 12, // The number of lines to draw
+//            length: 7, // The length of each line
+//            width: 4, // The line thickness
+//            radius: 10, // The radius of the inner circle
+//            color: '#000', // #rgb or #rrggbb
+//            speed: 1, // Rounds per second
+//            trail: 60, // Afterglow percentage
+//            shadow: false, // Whether to render a shadow
+//            hwaccel: false // Whether to use hardware acceleration
+//        };
+//        var target = document.getElementById('processingOverlay');
+//        var spinner = new Spinner(opts).spin(target);
+//}
 
-function removeSpinner() {
-    $('#processingOverlay').data('spinner').stop();
-}
+//function removeSpinner() {
+//    $('#processingOverlay').data('spinner').stop();
+//}
 
 
 
 var map;
 var ibs = [];
+var pos;
+var endPos;
+var directionsDisplay = new google.maps.DirectionsRenderer();
+var directionsService = new google.maps.DirectionsService();
 
 var closeInfoBox = function () {
     for (var i in ibs) {
@@ -45,7 +49,7 @@ function initialize() {
     // Try HTML5 geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
-            var pos = new google.maps.LatLng(position.coords.latitude,
+            pos = new google.maps.LatLng(position.coords.latitude,
                                              position.coords.longitude);
 
             var infowindow = new google.maps.InfoWindow({
@@ -100,7 +104,7 @@ function alertContents() {
 
             for (i = 0; i < json.length; i++) {
                 var latLng = new google.maps.LatLng(json[i].Lat, json[i].Lon);
-
+                endPos = latLng;
                 var image = {
                     url: "data:image/png;base64," + json[i].Icon + "",
                     size: new google.maps.Size(50, 50),
@@ -123,13 +127,19 @@ function alertContents() {
                     closeInfoBox();
   
                     ib.setPosition(marker.position);
-                    ib.setContent(this.get('title'));
+                    ib.setContent(this.get('title') + "<a href=\"#\" onClick=displayRoute(" + this.get('position').A+","+ this.get('position').F + ")>Click Here for Walking directions</a>");
                     ib.open(map, this);
+
+
                 });
                 closeInfoBox();
             }
             //alert("Loaded");
-            removeSpinner();
+            //removeSpinner();
+
+            // call direction routing
+            //displayRoute(endPos);
+            //
         } else {
             //TODO display proper error
             alert('There was a problem with the request.');
@@ -137,19 +147,21 @@ function alertContents() {
     }
 }
 
-function displayRoute(start, end, travelMode) {
+
+function displayRoute(lat, lon) {
 
     
-
-    var directionsDisplay = new google.maps.DirectionsRenderer();// also, constructor can get "DirectionsRendererOptions" object
+   // also, constructor can get "DirectionsRendererOptions" object
+    //directionsDisplay.setDirections({routes: []}); // map should be already initialized.
     directionsDisplay.setMap(map); // map should be already initialized.
 
+
     var request = {
-        origin: start,
-        destination: end,
-        travelMode: travelMode
+        origin: pos,
+        destination: new google.maps.LatLng(lat,lon),
+        travelMode: google.maps.TravelMode.WALKING
     };
-    var directionsService = new google.maps.DirectionsService();
+    
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
