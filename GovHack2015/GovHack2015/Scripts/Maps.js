@@ -1,7 +1,7 @@
 ﻿var map;
 
 function initialize() {
-    GetMarkers();
+
 
     var mapOptions = {
         zoom: 18
@@ -21,7 +21,7 @@ function initialize() {
                 position: pos,
                 content: 'Location found using HTML5.'
             });
-
+            GetMarkers(position.coords.latitude, position.coords.longitude);
             map.setCenter(pos);
         }, function () {
             handleNoGeolocation(true);
@@ -33,7 +33,8 @@ function initialize() {
 }
 
 function GetMarkers(latitude, longitude) {
-    makeRequest("http://localhost:3831/Map/GetMarkers?latitude=1&longitude=1");
+    var hr = window.location.href.substr(0, window.location.href.search(window.location.pathname.substr(0)));
+    makeRequest(hr + "/Map/GetMarkers?latitude=" + latitude + "&longitude=" + longitude);
 }
 
 function makeRequest(url) {
@@ -63,8 +64,19 @@ function makeRequest(url) {
 function alertContents() {
     if (httpRequest.readyState === 4) {
         if (httpRequest.status === 200) {
-            alert(httpRequest.responseText);
+            var json = JSON.parse(httpRequest.responseText);
+
+            for (i = 0; i < json.length; i++) {
+                var latLng = new google.maps.LatLng(json[i].Lat, json[i].Lon);
+                var marker = new google.maps.Marker({
+                    position: latLng,
+                    map: map
+                });
+                marker.setTitle(json[i].Title);
+            }
+            alert("Loaded");
         } else {
+            //TODO display proper error
             alert('There was a problem with the request.');
         }
     }

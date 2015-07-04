@@ -34,17 +34,40 @@ namespace GovHack2015.Logic
             var dtoContent = new DtoContent();
 
             var articles = PopulateArticles();
-            //var filteredARticles = GetArticlesFromLocation(latitude, longitude, radius);
-            
             dtoContent.ArticleMarkerList = ObtainMarkers(articles);
             dtoContent.ArticleList = articles;
             return dtoContent;
         }
 
-        //private List<Article> GetArticlesFromLocation(string latitude, string longitude, int radius)
-        //{
-            
-        //}
+        public DtoContent PopulateDtoContent(string latitude, string longitude, double radius)
+        {
+            var dtoContent = new DtoContent();
+
+            var articles = PopulateArticles();
+            var filteredARticles = GetArticlesFromLocation(articles, latitude, longitude, radius);
+            dtoContent.ArticleMarkerList = ObtainMarkers(filteredARticles);
+            dtoContent.ArticleList = filteredARticles;
+            return dtoContent;
+        }
+
+        private List<Article> GetArticlesFromLocation(IEnumerable<Article> articles, string latitude, string longitude, double radius)
+        {
+            var gen = new Genius();
+            var listToReturn = new List<Article>();
+            foreach (var art in articles)
+            {
+                if (art.Longitude.Trim() != String.Empty && art.Latitude.Trim() != String.Empty)
+                {
+                    if (gen.WithinDistance(double.Parse(art.Latitude), double.Parse(art.Longitude), double.Parse(latitude), double.Parse(longitude), radius))
+                    {
+                        listToReturn.Add(art);
+                    }
+                }
+                
+            }
+            return listToReturn;
+        }
+
 
         public IEnumerable<IMarker> ObtainMarkers(IEnumerable<Article> articles)
         {

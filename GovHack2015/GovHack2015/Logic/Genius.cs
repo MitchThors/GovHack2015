@@ -37,8 +37,11 @@ namespace GovHack2015.Logic
         //:::           GeoDataSource.com (C) All Rights Reserved 2015                :::
         //:::                                                                         :::
         //:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-
-        private double distance(double lat1, double lon1, double lat2, double lon2, char unit ='K')
+        public bool WithinDistance(double lat1, double lon1, double lat2, double lon2, double distanceWithin)
+        {
+            return (distance(lat1, lon1, lat2, lon2, 'K') <= distanceWithin);
+        }
+        private double distance(double lat1, double lon1, double lat2, double lon2, char unit)
         {
             double theta = lon1 - lon2;
             double dist = Math.Sin(deg2rad(lat1)) * Math.Sin(deg2rad(lat2)) + Math.Cos(deg2rad(lat1)) * Math.Cos(deg2rad(lat2)) * Math.Cos(deg2rad(theta));
