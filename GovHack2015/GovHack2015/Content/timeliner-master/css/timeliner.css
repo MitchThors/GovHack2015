@@ -16,7 +16,7 @@
   font-size: 12px;
   margin-right: 0;
   padding: 3px 5px;
-  white-space: nowrap;
+  white-space: normal;
 }
 .timeline-wrapper {
   clear: left;
@@ -59,7 +59,8 @@
   line-height: 1.2em;
   margin: 0 0 12px;
   padding: 0 0 0 24px;
-  white-space: nowrap;
+  white-space: normal;
+    width: auto;
 }
 .timeline-series dt a {
   color: #999;
@@ -86,7 +87,7 @@
   float: left;
   font-size: 1.5em;
   margin: 0;
-  white-space: nowrap;
+  white-space: normal;
 }
 .timeline-event-content {
   display: none;

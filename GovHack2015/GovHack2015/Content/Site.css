@@ -89,8 +89,20 @@ span.glyphicon-map-marker {
     float: left;
 }
 
-@media (max-width: 768px) {
     .main-button {
-    float:none
+        float: none;
+    }
 
-}
+    #search-barContainer {
+        overflow-x: hidden;
+        float: right;
+    }
+
+    #search-bar {
+        max-width: 100%;
+      
+    }
+
+ 
+    
+
