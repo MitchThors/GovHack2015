@@ -19,7 +19,8 @@
                     </button>
                     @Html.ActionLink("Application name", "Index", "Home", null, new { @class = "navbar-brand" })
                 </div>
-                <div class="navbar-collapse collapse">s
+                <div class="navbar-collapse collapse">
+                    s
                     <ul class="nav navbar-nav">
                         <li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
@@ -36,18 +37,21 @@
             @Scripts.Render("~/bundles/bootstrap")
             @RenderSection("scripts", required: false)
         </div>
+        <hr />
     </div>
-    <hr />
+
     <footer class="footer">
         <div class="container">
             <p class="text-muted">
-                <div class="row">
-	                <div class="col-lg-6">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-	                </div>
-	                <div class="col-lg-6">
-                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-	                </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-2">
+                        <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+                        <h1>List</h1>
+                    </div>
+                    <div class="col-lg-2">
+                        <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                        <h1>Map</h1>
+                    </div>
                 </div>
             </p>
         </div>

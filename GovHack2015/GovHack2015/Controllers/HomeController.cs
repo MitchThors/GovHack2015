@@ -11,8 +11,6 @@ namespace GovHack2015.Controllers
     {
         public ActionResult Index()
         {
-            GetArticles a = new GetArticles();
-            var aa = a.PopulateArticles();
             return View();
         }
 
