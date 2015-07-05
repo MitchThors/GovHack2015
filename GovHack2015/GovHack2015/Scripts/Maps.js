@@ -223,11 +223,11 @@ function displayRouteWalking(lat, lon) {
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
-            var step = 1;
-            var infowindow2 = new google.maps.InfoWindow();
-            infowindow2.setContent(response.routes[0].legs[0].steps[step].distance.text + "<br>" + response.routes[0].legs[0].steps[step].duration.text + " ");
-            infowindow2.setPosition(response.routes[0].legs[0].steps[step].end_location);
-            infowindow2.open(map);
+            //var step = 1;
+            //var infowindow2 = new google.maps.InfoWindow();
+            //infowindow2.setContent(response.routes[0].legs[0].steps[step].distance.text + "<br>" + response.routes[0].legs[0].steps[step].duration.text + " ");
+            //infowindow2.setPosition(response.routes[0].legs[0].steps[step].end_location);
+            //infowindow2.open(map);
         }
     });
 
