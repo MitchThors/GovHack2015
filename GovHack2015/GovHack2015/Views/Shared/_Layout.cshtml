@@ -24,18 +24,16 @@
                 
                 
                 <div class="navbar-collapse collapse">
-
-
                     <ul class="nav navbar-nav">
                         <li>
                             @using (Html.BeginForm("listSearch", "List"))
                             {
-
     
-                                    <div class="col-lg-8 col-md-8 col-xs-12" id="search-barContainer">
+                                    <div class="col-lg-6 col-md- col-sm-9 col-xs-12" id="search-barContainer">
                                         <div class="input-group">
-                                            <input type="text" id="search-bar" class="form-control" placeholder="Search" aria-describedby="basic-addon2">
-                                            <span class="input-group-addon" id="basic-addon2">Testing</span>
+                                            <input type="text" id="search-bar" class="form-control" placeholder="Search" aria-describedby="basic-addon2" name="search">
+                                            <span class="input-group-btn"  id="basic-addon2"><button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span> Search</button></span>
+
                                         </div>
                                     </div>
 

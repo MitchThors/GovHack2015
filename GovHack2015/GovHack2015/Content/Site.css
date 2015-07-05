@@ -124,6 +124,15 @@ span.glyphicon-map-marker {
       
 }
 
+@media (min-width: 768px) {
+    .navbar-nav {
+        max-width: 70%;
+        float: right;
+        padding-top: 10px;
+} 
+}
+
+
  #main-h3 {
      text-align: end;
  }
