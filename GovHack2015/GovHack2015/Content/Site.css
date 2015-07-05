@@ -72,6 +72,7 @@ input[type="checkbox"].input-validation-error {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 100px;
+    padding-bottom: 10px;
     /*background-color: #f5f5f5;*/
 }
 
@@ -91,57 +92,71 @@ span.glyphicon-map-marker {
 
 /*Google maps stuff*/
 .gmaps-wrapper {
-     position: relative;
-     padding-bottom: 75%;
-     height: 0;
-     overflow: hidden;
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
 }
 
-.gmaps-wrapper .dmxGoogleMaps {
-     position: absolute;
-     top: 0;
-     left: 0;
-     width: 100% !important;
-     height: 100% !important;
-}
+    .gmaps-wrapper .dmxGoogleMaps {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+    }
 
 /*timeliner*/
 .timeline-event-content > img {
     float: left;
 }
 
-    .main-button {
-        float: none;
-    }
-
-    #search-barContainer {
-        overflow-x: hidden;
-        float: right;
-    }
-
-    #search-bar {
-        max-width: 100%;
-      
+.main-button {
+    float: none;
 }
+
+#search-barContainer {
+    overflow-x: hidden;
+    float: right;
+}
+
+#search-bar {
+    max-width: 100%;
+}
+
+#list-heading {
+    padding-bottom: 10px;
+}
+
+#main-about-heading {
+    padding-top: 20px;
+}
+
+#main-about-p {
+    text-align: justify;
+}
+
 
 @media (min-width: 768px) {
     .navbar-nav {
         max-width: 70%;
         float: right;
         padding-top: 10px;
-} 
+    }
 }
 
+@media (max-width: 1008px) {
+    #main-img {
+        padding-bottom: 120px;
+    }
+}
 
- #main-h3 {
-     text-align: end;
- }
+#main-h3 {
+    text-align: end;
+}
 
- @media (max-width: 480px) {
-     #main-h3 {
-     text-align: center;
-    } 
- }
-
-    
-
+@media (max-width: 480px) {
+    #main-h3 {
+        text-align: center;
+    }
+}
