@@ -36,10 +36,10 @@ else
                         </dt>
                         <dd id="toggle@(i)" style="display: none">
 
-                            <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250" /><br />
+                            <img alt="Sorry, no story description available" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250"/><br/>
                             <h6><small>@Model.ArticleList.ElementAt(i).PrimaryImageRightsImage</small></h6>
                             <h5>@Model.ArticleList.ElementAt(i).PrimaryImageCaption</h5>
-                            
+
                             <a href="@Model.ArticleList.ElementAt(i).Url">Tell me more</a>
                             <hr/>
 
@@ -51,13 +51,15 @@ else
                         }
 
                     }
-
+                    <div class="list-padding-event"></div>
                 </dl>
+
             </div>
+
         }
 
 
-
+        <div class="list-padding"></div>
     </div>
 
 }
