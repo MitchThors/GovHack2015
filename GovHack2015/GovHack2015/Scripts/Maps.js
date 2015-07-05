@@ -155,7 +155,8 @@ function alertContents() {
                 });
                 closeInfoBox();
             }
-            alert("Loaded");
+            document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
+            //alert("Loaded");
             //removeSpinner();
 
             // call direction routing
@@ -163,7 +164,9 @@ function alertContents() {
             //
         } else {
             //TODO display proper error
+            document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
             alert('There was a problem with the request.');
+
         }
     }
 }
@@ -184,6 +187,7 @@ function displayRouteDriving(lat, lon) {
 
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
+            alert(response);
             directionsDisplay.setDirections(response);
         }
     });
@@ -208,6 +212,11 @@ function displayRouteWalking(lat, lon) {
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
             directionsDisplay.setDirections(response);
+            var step = 1;
+            var infowindow2 = new google.maps.InfoWindow();
+            infowindow2.setContent(response.routes[0].legs[0].steps[step].distance.text + "<br>" + response.routes[0].legs[0].steps[step].duration.text + " ");
+            infowindow2.setPosition(response.routes[0].legs[0].steps[step].end_location);
+            infowindow2.open(map);
         }
     });
 
