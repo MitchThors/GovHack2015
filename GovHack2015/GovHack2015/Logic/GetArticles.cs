@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Policy;
 using System.Web;
+using System.Web.UI.WebControls;
 using GovHack2015.Globals;
 using GovHack2015.Models;
 using Newtonsoft.Json;
@@ -87,7 +88,9 @@ namespace GovHack2015.Logic
                 Lat = article.Latitude,
                 Lon = article.Longitude,
                 Title = article.Title,
-                Content = article.Url
+                Content = string.Format("<h3>{1}</h3><br /> <a href=\"{0}\">Click Here for Article</a> <br />", article.Url, article.Title)
+
+                
             }).ToList();
 
             return markers;

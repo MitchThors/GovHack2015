@@ -133,7 +133,7 @@ function alertContents() {
                     position: latLng,
                     map: map,
                     icon: image,
-                    urlForStory: json[i].Content
+                    content: json[i].Content
                 });
 
                 marker.setTitle(json[i].Title);
@@ -146,8 +146,7 @@ function alertContents() {
   
                     ib.setPosition(marker.position);
 
-                    ib.setContent(this.get('title') +
-                        "<br /> <a href=\"" + this.get('urlForStory') + "\">Click Here for Article</a> <br />" +
+                    ib.setContent(this.get('content') +
                         "<br/><a href=\"#\" onClick=displayRouteDriving(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Driving directions</a>" +
                         "<br/><a href=\"#\" onClick=displayRouteWalking(" + this.get('position').A + "," + this.get('position').F + ")>Click Here for Walking directions</a>");
                     ib.open(map, this);
