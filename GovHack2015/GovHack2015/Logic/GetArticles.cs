@@ -89,7 +89,7 @@ namespace GovHack2015.Logic
                 Lat = article.Latitude,
                 Lon = article.Longitude,
                 Title = article.Title,
-                Content = string.Format("<h3>{1}</h3><br /> <img style=\"max-width: 150px; max-height: 150px;\" src=\"{2}\" alt=\"{3}\"> <br /> <a href=\"{0}\">Click Here for Article</a> <br />", article.Url, article.Title, article.PrimaryImage, article.PrimaryImageCaption)
+                Content = string.Format("<h3>{1}</h3><br /> <img style=\"max-width: 150px; max-height: 150px;\" src=\"{2}\" alt=\"{3}\"> <h6><small>{4}</small></h6> <h5>{3}</h5> <br /> <a href=\"{0}\">Tell me more</a> <br />", article.Url, article.Title, article.PrimaryImage, article.PrimaryImageCaption, article.PrimaryImageRightsImage)
 
                 
             }).ToList();
