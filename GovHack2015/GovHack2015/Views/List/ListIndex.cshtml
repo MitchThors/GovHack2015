@@ -32,17 +32,17 @@ else
                     @while (date == Model.ArticleList.ElementAt(i).DateTime)
                     {
                         <dt onclick="toggleId(toggle@(i))">
-                            <a>@Model.ArticleList.ElementAt(i).Title</a>
+                            <h4>@Model.ArticleList.ElementAt(i).Title</h4>
                         </dt>
                         <dd id="toggle@(i)" style="display: none">
 
                             <img alt="Primary Image" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250" /><br />
-                            <p>@Model.ArticleList.ElementAt(i).Subjects</p>
+                            <h6><small>@Model.ArticleList.ElementAt(i).PrimaryImageRightsImage</small></h6>
+                            <h5>@Model.ArticleList.ElementAt(i).PrimaryImageCaption</h5>
+                            
+                            <a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a>
+                            <hr/>
 
-
-                            <p>
-                                <a href="@Model.ArticleList.ElementAt(i).Url">Click for full Article</a>
-                            </p>
                         </dd>
                         i++;
                         if (i > Model.ArticleList.Count() - 1)
