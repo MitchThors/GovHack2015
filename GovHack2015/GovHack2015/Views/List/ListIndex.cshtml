@@ -5,6 +5,7 @@
 @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>*@
 
 
+<div class="loading">Loading&#8230;</div>
 
 @if (Model.Error != null)
 {
@@ -39,10 +40,11 @@ else
                             <img alt="Sorry, no story description available" src="@Model.ArticleList.ElementAt(i).PrimaryImage" width="250"/><br/>
                             <h6><small>@Model.ArticleList.ElementAt(i).PrimaryImageRightsImage</small></h6>
                             <h5>@Model.ArticleList.ElementAt(i).PrimaryImageCaption</h5>
-
+                            
                             <a href="@Model.ArticleList.ElementAt(i).Url">Tell me more</a>
-                           
-                                @Html.ActionLink("Find Me on the Map", "Index", "Map", new { lat = Model.ArticleList.ElementAt(i).Latitude, lon = Model.ArticleList.ElementAt(i).Longitude }, new { @class = "navbar-brand" })
+                            <br/>
+                            
+                            @Html.ActionLink("Find Me on the Map", "Index", "Map", new { lat = Model.ArticleList.ElementAt(i).Latitude, lon = Model.ArticleList.ElementAt(i).Longitude }, null)
 
                             <hr/>
 
@@ -107,6 +109,7 @@ else
             });
         }
 
+        document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
         
 
         //$.timeliner({});
