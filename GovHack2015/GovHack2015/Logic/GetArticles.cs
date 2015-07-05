@@ -82,13 +82,14 @@ namespace GovHack2015.Logic
 
         public IEnumerable<IMarker> ObtainMarkers(IEnumerable<Article> articles)
         {
+            
             var markers = articles.Select(article => new ArticleMarker()
             {
                 Icon = GlobalData.IconPin,
                 Lat = article.Latitude,
                 Lon = article.Longitude,
                 Title = article.Title,
-                Content = string.Format("<h3>{1}</h3><br /> <a href=\"{0}\">Click Here for Article</a> <br />", article.Url, article.Title)
+                Content = string.Format("<h3>{1}</h3><br /> <img style=\"max-width: 150px; max-height: 150px;\" src=\"{2}\" alt=\"{3}\"> <br /> <a href=\"{0}\">Click Here for Article</a> <br />", article.Url, article.Title, article.PrimaryImage, article.PrimaryImageCaption)
 
                 
             }).ToList();
