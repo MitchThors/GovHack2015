@@ -31,12 +31,13 @@ var pos;
 var endPos;
 var directionsDisplay = new google.maps.DirectionsRenderer();
 var directionsService = new google.maps.DirectionsService();
-
+var loc = null;
 var closeInfoBox = function () {
     for (var i in ibs) {
         ibs[i].close();
     }
 }
+
 
 function initialize() {
     var mapOptions = {
@@ -73,7 +74,10 @@ function initialize() {
             });
 
             GetMarkers(position.coords.latitude, position.coords.longitude);
+            
             map.setCenter(pos);
+            
+            
 
         }, function () {
             handleNoGeolocation(true);
@@ -82,6 +86,10 @@ function initialize() {
         // Browser doesn't support Geolocation
         handleNoGeolocation(false);
     }
+}
+function recenterMap(lat, lon) {
+    loc = new google.maps.LatLng(lat,lon);
+    
 }
 
 function GetMarkers(latitude, longitude) {
@@ -154,6 +162,9 @@ function alertContents() {
 
                 });
                 closeInfoBox();
+            }
+            if (loc != null) {
+                map.setCenter(loc);
             }
             document.getElementsByClassName('loading')[0].style.visibility = 'hidden';
             //alert("Loaded");

@@ -2,11 +2,13 @@
 @using GovHack2015.ViewModels.Map;
 
 @model MapGET
+@Scripts.Render("~/bundles/jquery")
+<script>
 
-@{
+    @{
     var GoogleMapsAPIKey = GlobalData.GoogleMapsApiKey;
 }
-
+</script>
     <div id="map-canvas"></div>
 
 <div class="loading">Loading&#8230;</div>
@@ -21,9 +23,25 @@
 
 
 
-@Scripts.Render("~/bundles/jquery")
+
     
     @Scripts.Render("~/Scripts/Maps.js")
+
+
+
+@{
+    if (Model.Lat != null && Model.Lon != null)
+    {
+        <script>
+            
+                recenterMap(@(Model.Lat), @(Model.Lon));
+            
+           
+        </script>
+        
+    }
+
+}
 @*@Scripts.Render("~/Scripts/geolocationmarker.js")*@
 
 @*<div class="row">

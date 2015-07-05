@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GovHack2015.Logic;
+using GovHack2015.ViewModels.Map;
 using Newtonsoft.Json;
 
 namespace GovHack2015.Controllers
@@ -12,12 +13,22 @@ namespace GovHack2015.Controllers
     {
         //
         // GET: /Map/
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+
+
+
+        //    return View();
+        //}
+
+        public ActionResult Index(string lat = null, string lon = null)
         {
-
-
-
-            return View();
+            var mapGet = new MapGET
+            {
+                Lat = lat,
+                Lon = lon
+            };
+            return View(mapGet);
         }
 
         public ContentResult GetMarkers(string latitude, string longitude)

@@ -41,6 +41,9 @@ else
                             <h5>@Model.ArticleList.ElementAt(i).PrimaryImageCaption</h5>
 
                             <a href="@Model.ArticleList.ElementAt(i).Url">Tell me more</a>
+                           
+                                @Html.ActionLink("Find Me on the Map", "Index", "Map", new { lat = Model.ArticleList.ElementAt(i).Latitude, lon = Model.ArticleList.ElementAt(i).Longitude }, new { @class = "navbar-brand" })
+
                             <hr/>
 
                         </dd>
