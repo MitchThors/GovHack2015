@@ -198,7 +198,7 @@ function displayRouteDriving(lat, lon) {
 
     directionsService.route(request, function (response, status) {
         if (status == google.maps.DirectionsStatus.OK) {
-            alert(response);
+            //alert(response);
             directionsDisplay.setDirections(response);
         }
     });
