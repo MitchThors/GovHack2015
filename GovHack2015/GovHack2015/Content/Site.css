@@ -145,11 +145,7 @@ span.glyphicon-map-marker {
     text-align: justify;
 }
 
-.list-marker
-{
-    width: 10px;
-  height: 10px;
-}
+
 
 @media (min-width: 768px) {
     .navbar-nav {
